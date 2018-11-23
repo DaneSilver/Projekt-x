@@ -7,6 +7,7 @@ export default createGlobalStyle`
 }
 
 body {
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: #A9A9A9;
@@ -15,5 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(https://source.unsplash.com/random);
+  background-size: cover;
 }
 `
