@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const HabitTarget = styled.section`
   display: grid;
@@ -11,19 +12,14 @@ const Flex = styled.div`
 `
 const Circle = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background-color: red;
   height: 100px;
   width: 100px;
   border-radius: 5px;
 `
-const H1 = styled.h1`
-  display: flex;
-  height: 100px;
-  width: 100px;
-  align-items: center;
-`
+
 const H2 = styled.h2`
   display: flex;
   height: 100px;
@@ -33,12 +29,17 @@ const H2 = styled.h2`
 `
 
 export default class Profile extends Component {
+  static propTypes = {
+    goalName: PropTypes.string,
+    dailyTime: PropTypes.string
+  }
+
   render() {
     return (
       <HabitTarget>
         <Flex>
           <Circle>
-            <H1>{this.props.goalName}</H1>
+            <h1>{this.props.goalName}</h1>
           </Circle>
         </Flex>
         <Flex>

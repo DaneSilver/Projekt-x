@@ -6,12 +6,15 @@ export const Wrapper = styled.div`
 `
 
 export const Btn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px 10px 5px 10px;
   width: 200px;
   height: 50px;
 `
 export const Font = styled.p`
-  font-size: 25px;
+  font-size: 10px;
   border-radius: 10px;
 `
 

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Labelstyle = styled.label`
   background: deeppink;
+  margin-bottom: 1em;
 `
 
 const FlexStyle = styled.div`
@@ -19,16 +21,20 @@ const Input = styled.input`
 `
 
 export default class Slider extends Component {
+  static propTypes = {
+    onChange: PropTypes.func.isRequired
+  }
+
   render() {
     const { onChange } = this.props
-    const min = ''
+
     return (
       <FlexStyle>
         <Labelstyle>Mind. Zeit eingeben</Labelstyle>
         <Input
           type="range"
           // list="tickmarks"
-          min={min}
+          min="5"
           max="60"
           step="5"
           onChange={event => onChange(event.target.value)}

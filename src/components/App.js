@@ -16,7 +16,7 @@ const Wrapper = styled.section`
 export default class App extends Component {
   state = {
     goalName: 'Coden lernen',
-    dailyTime: 5
+    dailyTime: '5'
   }
 
   setGoalName = goalName => {
