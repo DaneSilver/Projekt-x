@@ -31,7 +31,6 @@ export default class Home extends Component {
 
     return (
       <React.Fragment>
-        <span>{new Date().toLocaleDateString()}</span>
         <Input onChange={onInput} />
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>{dailyTime} Minuten</TimeDisplay>
