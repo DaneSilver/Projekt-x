@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import InfiniteCalendar from 'react-infinite-calendar'
 import 'react-infinite-calendar/styles.css'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 // const CalendarStyle = styled.InfiniteCalendar`
 //     width={400},
