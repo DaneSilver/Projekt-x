@@ -16,7 +16,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(https://source.unsplash.com/random);
-  background-size: cover;
+  background-color: white;
 }
 `

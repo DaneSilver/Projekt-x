@@ -11,13 +11,18 @@ import Slider from './Slider'
 //import styled from 'styled-components'
 
 const TimeDisplay = styled.div`
-  background: deeppink;
+  border: 2px solid #a020f0;
+  background-color: white;
+  margin-bottom: 50px;
+  border-radius: 15px;
+  color: black;
+  height: 25px;
 `
 
 export default class Home extends Component {
   static propTypes = {
     setSlider: PropTypes.func,
-    dailyTime: PropTypes.string,
+    dailyTime: PropTypes.number,
     onInput: PropTypes.func
   }
 
@@ -26,8 +31,9 @@ export default class Home extends Component {
 
     return (
       <React.Fragment>
+        <span>{new Date().toLocaleDateString()}</span>
         <Input onChange={onInput} />
-        <Slider onChange={setSlider} startTime={dailyTime} />
+        <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>{dailyTime} Minuten</TimeDisplay>
         <NavLink to="/Profile">
           <Button />
