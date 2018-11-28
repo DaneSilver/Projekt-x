@@ -6,17 +6,25 @@ import Home from './Home'
 import Profile from './Profile'
 
 const Wrapper = styled.section`
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 1fr;
-  text-align: center;
-  grid-gap: 20px;
+  height: 100vh;
+  width: 100vw;
 `
 
 export default class App extends Component {
   state = {
     goalName: 'Coden lernen',
-    dailyTime: 20
+    dailyTime: 20,
+    today: new Date(),
+    startDate: null,
+    totalDays: 66,
+    success: null,
+    failure: null,
+    future: null
+  }
+
+  getEndDate() {
+    const days = 24 * 60 * 60 * 1000
+    return new Date(this.state.startDate + this.state.totalDays * days)
   }
 
   setGoalName = goalName => {
@@ -31,6 +39,20 @@ export default class App extends Component {
     })
   }
 
+  setStartDate = () => {
+    this.setState({
+      startDate: this.state.today
+    })
+  }
+
+  setDone = () => {
+    this.setState({
+      success: this.state.success,
+      failure: this.state.failure,
+      future: this.state.future
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -40,6 +62,7 @@ export default class App extends Component {
             path="/"
             render={() => (
               <Home
+                setStartDate={this.setStartDate}
                 onInput={this.setGoalName}
                 setSlider={this.setSlider}
                 dailyTime={this.state.dailyTime}
@@ -52,6 +75,11 @@ export default class App extends Component {
               <Profile
                 goalName={this.state.goalName}
                 dailyTime={this.state.dailyTime}
+                startDate={this.state.startDate}
+                endDate={this.getEndDate()}
+                today={this.state.today}
+                selectedDate={this.state.selectedDate}
+                onSelect={this.setDate}
               />
             )}
           />

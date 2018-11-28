@@ -1,32 +1,57 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import Date from './Date'
+import arrays from './arrays'
 
-const HabitTarget = styled.section`
+const Wrapper = styled.section``
+
+const HabitTarget = styled.div`
   display: grid;
-  height: 100vh;
-  margin: 2em;
-`
-const Flex = styled.div`
-  margin: 5em;
-`
-const Circle = styled.div`
-  display: flex;
-  align-items: center;
+  grid-template-columns: 80vw;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
   justify-content: center;
-  background-color: white;
-  height: 100px;
-  width: 100px;
-  border-radius: 5px;
+  margin: 1em;
+  background: purple;
+  border-radius: 10px;
 `
 
 const H2 = styled.h2`
-  display: flex;
-  height: 100px;
-  width: 100px;
-  align-items: center;
+  text-align: center;
+  color: white;
+`
+const GridCalendar = styled.div`
+  display: grid;
+  grid-template-rows: repeat(11, 7vh);
+  grid-template-columns: repeat(2, 7vh 7vh 7vh);
+  grid-gap: 10px;
+  margin: 1em;
   justify-content: center;
+`
+
+const FlexBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Circle = styled.div`
+  height: 7vh;
+  width: 7vh;
+  border-radius: 50%;
+  background: black;
+
+  &.successClass {
+    background: green;
+  }
+
+  &.failureClass {
+    background: red;
+  }
+
+  &.futureClass {
+    background: grey;
+  }
 `
 
 export default class Profile extends Component {
@@ -39,19 +64,19 @@ export default class Profile extends Component {
     const { goalName, dailyTime } = this.props
 
     return (
-      <HabitTarget>
-        <Flex>
-          <Circle>
-            <h1>{goalName}</h1>
-          </Circle>
-        </Flex>
-        <Flex>
-          <Circle>
-            <H2>{dailyTime}</H2>
-          </Circle>
-        </Flex>
-        <Date />
-      </HabitTarget>
+      <Wrapper>
+        <HabitTarget>
+          <H2>{goalName}</H2>
+          <H2>{dailyTime} Minuten</H2>
+        </HabitTarget>
+        <GridCalendar>
+          {arrays.fill().map(success => (
+            <FlexBox>
+              {<Circle className={success ? 'true' : 'future'} />}
+            </FlexBox>
+          ))}
+        </GridCalendar>
+      </Wrapper>
     )
   }
 }

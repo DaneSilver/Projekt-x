@@ -27,15 +27,18 @@ export default class Home extends Component {
   }
 
   render() {
-    const { onInput, setSlider, dailyTime } = this.props
+    const { onInput, setSlider, dailyTime, setStartDate } = this.props
+
+    const today = new Date().toLocaleDateString()
 
     return (
       <React.Fragment>
+        <span>{today}</span>
         <Input onChange={onInput} />
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>{dailyTime} Minuten</TimeDisplay>
         <NavLink to="/Profile">
-          <Button />
+          <Button onClick={setStartDate} />
         </NavLink>
       </React.Fragment>
     )
