@@ -8,7 +8,9 @@ import Input from './Input'
 import Button from './Button'
 import Slider from './Slider'
 
-//import styled from 'styled-components'
+const Wrapper = styled.div`
+  display: grid;
+`
 
 const TimeDisplay = styled.div`
   border: 2px solid #a020f0;
@@ -32,7 +34,7 @@ export default class Home extends Component {
     const today = new Date().toLocaleDateString()
 
     return (
-      <React.Fragment>
+      <Wrapper>
         <span>{today}</span>
         <Input onChange={onInput} />
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
@@ -40,7 +42,7 @@ export default class Home extends Component {
         <NavLink to="/Profile">
           <Button onClick={setStartDate} />
         </NavLink>
-      </React.Fragment>
+      </Wrapper>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import arrays from './arrays'
+import dayArray from '../dayArray.json'
 
 const Wrapper = styled.section``
 
@@ -36,25 +36,31 @@ const FlexBox = styled.div`
 `
 
 const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 7vh;
   width: 7vh;
   border-radius: 50%;
-  background: black;
 
-  &.successClass {
-    background: green;
+  &.futureClass {
+    background: grey;
   }
 
   &.failureClass {
     background: red;
   }
 
-  &.futureClass {
-    background: grey;
+  &.successClass {
+    background: green;
   }
 `
 
 export default class Profile extends Component {
+  state = {
+    days: dayArray
+  }
+
   static propTypes = {
     goalName: PropTypes.string,
     dailyTime: PropTypes.number
@@ -62,7 +68,7 @@ export default class Profile extends Component {
 
   render() {
     const { goalName, dailyTime } = this.props
-
+    console.log(this.state.days)
     return (
       <Wrapper>
         <HabitTarget>
@@ -70,9 +76,19 @@ export default class Profile extends Component {
           <H2>{dailyTime} Minuten</H2>
         </HabitTarget>
         <GridCalendar>
-          {arrays.fill().map(success => (
-            <FlexBox>
-              {<Circle className={success ? 'true' : 'future'} />}
+          {this.state.days.map((dayObject, index) => (
+            <FlexBox key={index}>
+              <Circle
+                className={
+                  dayObject.future
+                    ? 'futureClass '
+                    : dayObject.success
+                    ? 'successClass'
+                    : 'failureClass'
+                }
+              >
+                {index + 1}
+              </Circle>
             </FlexBox>
           ))}
         </GridCalendar>

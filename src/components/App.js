@@ -17,9 +17,9 @@ export default class App extends Component {
     today: new Date(),
     startDate: null,
     totalDays: 66,
-    success: null,
-    failure: null,
-    future: null
+    success: false,
+    failure: false,
+    future: true
   }
 
   getEndDate() {
@@ -42,14 +42,6 @@ export default class App extends Component {
   setStartDate = () => {
     this.setState({
       startDate: this.state.today
-    })
-  }
-
-  setDone = () => {
-    this.setState({
-      success: this.state.success,
-      failure: this.state.failure,
-      future: this.state.future
     })
   }
 
