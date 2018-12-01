@@ -5,10 +5,7 @@ import styled from 'styled-components'
 import Home from './Home'
 import Profile from './Profile'
 
-const Wrapper = styled.section`
-  height: 100vh;
-  width: 100vw;
-`
+const Wrapper = styled.section``
 
 export default class App extends Component {
   state = {

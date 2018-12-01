@@ -2,28 +2,21 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Formstyle = styled.section`
-  display: flex;
-  flex-direction: column;
-`
-
-const Labelstyle = styled.label`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  margin-top: 50px;
-  background: white;
-  border: 2px solid #a020f0;
-  border-radius: 10px;
-`
-
 export const InputStyle = styled.input`
   border: 5 solid #a020f0;
   background-color: white;
-  margin-bottom: 50px;
-  border-radius: 15px;
+  border-radius: 30px;
+  padding-left: 10px;
   color: black;
-  height: 25px;
+  height: 30px;
+  width: 240px;
+  font-size: 15px;
+`
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export default class Input extends Component {
@@ -35,15 +28,12 @@ export default class Input extends Component {
     const { onChange } = this.props
 
     return (
-      <Formstyle>
-        <Labelstyle>
-          <h1>Welches Ziel verfolgst Du?</h1>
-        </Labelstyle>
+      <Flex>
         <InputStyle
           onChange={event => onChange(event.target.value)}
           placeholder="  Was ist Dein Ziel?"
         />
-      </Formstyle>
+      </Flex>
     )
   }
 }

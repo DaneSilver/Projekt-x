@@ -10,6 +10,7 @@ export const Btn = styled.button`
   padding: 10px;
   border-radius: 10px;
   width: 300px;
+  margin-bottom: 0;
 `
 
 export const Font = styled.p`
