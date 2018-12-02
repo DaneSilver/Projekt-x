@@ -3,36 +3,29 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 //import uid from 'uid'
 import styled from 'styled-components'
-import Input from './Input'
-import Button from './Button'
-import Slider from './Slider'
+import Input from '../Functions/Input'
+import Button from '../Functions/Button'
+import Slider from '../Functions/Slider'
 
 const Wrapper = styled.section`
   display: grid;
-  height: 100vh;
-  width: 100vw;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 100%;
 `
 const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 400px;
+  opacity: 0.3;
+  filter: alpha(opacity=50);
   height: 30vh;
+  width: 50vw;
   background: blue;
+  background-image: url(https://source.unsplash.com/random);
+  background-size: cover;
   z-index: 0;
 `
 
-const Oval = styled.div`
-  position: absolute;
-  width: 550px;
-  height: 150px;
-  background-color: white;
-  margin-block-start: 100px;
-  border-radius: 80%;
-  z-index: 1;
-`
+const Oval = styled.div``
 
 const CircleHeader = styled.div`
   position: absolute;
@@ -66,7 +59,14 @@ const TimeDisplay = styled.h3`
   color: green;
 `
 
-export default class Home extends Component {
+export default class Selection extends Component {
+  setStartDate = () => {
+    let saveObject = this.getSaveObject() // laden des speicherobjekts
+    saveObject.startDate = new Date() // setzen des aktuellen Datums
+    console.log(saveObject)
+    this.saveObject(saveObject) // speichern des speicherobjekts
+  }
+
   static propTypes = {
     setSlider: PropTypes.func,
     dailyTime: PropTypes.number,
@@ -74,9 +74,7 @@ export default class Home extends Component {
   }
 
   render() {
-    const { onInput, setSlider, dailyTime, setStartDate } = this.props
-
-    // const today = new Date().toLocaleDateString()
+    const { onInput, setSlider, dailyTime } = this.props
 
     return (
       <Wrapper>
@@ -94,18 +92,9 @@ export default class Home extends Component {
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>{dailyTime} Minuten</TimeDisplay>
         <NavLink to="/Profile">
-          <Button onClick={setStartDate} />
+          <Button onClick={this.setStartDate} />
         </NavLink>
       </Wrapper>
     )
   }
 }
-
-/* <span>{today}</span> */
-
-/* linear-gradient(
-    180deg,
-    #9fb8ad 0%,
-    #1fc8db 51%,
-    #2cb5e8 75%
-  ); */

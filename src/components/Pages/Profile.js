@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import dayArray from '../dayArray.json'
+import dayArray from '../../dayArray.json'
 
 const Wrapper = styled.section``
 
@@ -11,7 +11,6 @@ const HabitTarget = styled.div`
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 20px;
   justify-content: center;
-  margin: 1em;
   background: purple;
   border-radius: 10px;
 `
