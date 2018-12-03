@@ -49,7 +49,6 @@ export default class App extends Component {
         return saveObject.startDate
       }
     }
-
     return null
   }
 

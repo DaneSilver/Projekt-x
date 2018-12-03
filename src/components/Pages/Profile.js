@@ -2,30 +2,15 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import dayArray from '../../dayArray.json'
+import HeaderProfile from '../Functions/HeaderProfile'
 
-const Wrapper = styled.section``
-
-const HabitTarget = styled.div`
-  display: grid;
-  grid-template-columns: 80vw;
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 20px;
-  justify-content: center;
-  background: purple;
-  border-radius: 10px;
-`
-
-const H2 = styled.h2`
-  text-align: center;
-  color: white;
-`
 const GridCalendar = styled.div`
   display: grid;
-  grid-template-rows: repeat(11, 7vh);
-  grid-template-columns: repeat(2, 7vh 7vh 7vh);
-  grid-gap: 10px;
-  margin: 1em;
+  grid-template-rows: repeat(8, 5vh);
+  grid-template-columns: repeat(3, 5vh 5vh 5vh);
   justify-content: center;
+  margin-top: 100px;
+  grid-gap: 5px;
 `
 
 const FlexBox = styled.div`
@@ -38,9 +23,10 @@ const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 7vh;
-  width: 7vh;
+  height: 4vh;
+  width: 4vh;
   border-radius: 50%;
+  z-index: 3;
 
   &.futureClass {
     background: grey;
@@ -66,14 +52,10 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { goalName, dailyTime } = this.props
     console.log(this.state.days)
     return (
-      <Wrapper>
-        <HabitTarget>
-          <H2>{goalName}</H2>
-          <H2>{dailyTime} Minuten</H2>
-        </HabitTarget>
+      <React.Fragment>
+        <HeaderProfile />
         <GridCalendar>
           {this.state.days.map((dayObject, index) => (
             <FlexBox key={index}>
@@ -91,7 +73,7 @@ export default class Profile extends Component {
             </FlexBox>
           ))}
         </GridCalendar>
-      </Wrapper>
+      </React.Fragment>
     )
   }
 }

@@ -11,21 +11,9 @@ const FlexStyle = styled.div`
   position: relative;
 `
 
-const SliderBg = styled.div`
-  position: absolute;
-  width: 90vw;
-  margin-inline-start: 60px;
-  height: 60px;
-  background-color: blue;
-  border-bottom-left-radius: 50px;
-  border-top-left-radius: 50px;
-  z-index: 0;
-`
-
-const SliderFlex = styled.div`
-  display: flex;
+const SliderFlex = styled.section`
   width: 250px;
-  margin-inline-start: 80px;
+  margin-top: 50px;
   z-index: 1;
 `
 
@@ -47,15 +35,14 @@ export default class Slider extends Component {
             value={value}
             handleStyle={{
               background: 'red',
-              border: '2.5px solid white',
-              transform: 'scale(2.5)'
+              border: '1px solid white',
+              transform: 'scale(1.5)'
             }}
-            trackStyle={{ background: 'white' }}
-            railStyle={{ background: 'white' }}
+            trackStyle={{ background: '#7ED321' }}
+            railStyle={{ background: '#676767' }}
             onChange={value => onChange(value)}
           />
         </SliderFlex>
-        <SliderBg />
       </FlexStyle>
     )
   }
