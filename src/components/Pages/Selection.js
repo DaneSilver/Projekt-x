@@ -49,11 +49,24 @@ const Btn = styled.section`
 `
 
 export default class Selection extends Component {
-  setStartDate = () => {
-    let saveObject = this.getSaveObject() // laden des speicherobjekts
-    saveObject.startDate = new Date() // setzen des aktuellen Datums
-    console.log(saveObject)
-    this.saveObject(saveObject) // speichern des speicherobjekts
+  setHabitData = () => {
+    let sObject = this.props.loadObject() // laden des speicherobjekts
+    sObject.startDate = new Date()
+    sObject.dailyTime = this.props.dailyTime
+    sObject.goalName = this.props.goalName // setzen des aktuellen Datums
+
+    // speichern der tage
+    let days = []
+    for (let i = 1; i <= this.props.totalDays; i++) {
+      days.push({
+        day: i,
+        success: false
+      })
+    }
+
+    sObject.days = days
+
+    this.props.saveObject(sObject) // speichern des speicherobjekts
   }
 
   static propTypes = {
@@ -63,7 +76,14 @@ export default class Selection extends Component {
   }
 
   render() {
-    const { onInput, setSlider, dailyTime } = this.props
+    const {
+      onInput,
+      setSlider,
+      dailyTime,
+      goalName,
+      loadObject,
+      saveObject
+    } = this.props
 
     return (
       <Wrapper>
@@ -76,8 +96,8 @@ export default class Selection extends Component {
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>Mindestens {dailyTime} Minuten!</TimeDisplay>
         <NavLink to="/Profile">
-          <Btn>
-            <Button onClick={this.setStartDate} />
+          <Btn onClick={this.setHabitData}>
+            <Button />
           </Btn>
         </NavLink>
       </Wrapper>

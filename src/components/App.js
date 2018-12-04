@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Selection from './Pages/Selection'
 import Profile from './Pages/Profile'
 import Home from './Pages/Home'
+import Abfrage from './Pages/Query'
 
 const Wrapper = styled.section`
   height: 100vh;
@@ -13,13 +14,12 @@ const Wrapper = styled.section`
 
 export default class App extends Component {
   state = {
-    goalName: 'Coden lernen',
-    dailyTime: 20,
+    goalName: this.getGoalName(),
+    dailyTime: this.getDailyTime(),
     today: new Date(),
     startDate: this.getStartDate(),
     totalDays: 66,
-    success: false,
-    future: true
+    days: this.getDays()
   }
 
   getEndDate() {
@@ -39,23 +39,61 @@ export default class App extends Component {
     })
   }
 
-  getStartDate() {
+  getDays() {
     // laden das speicherobjekt
-    let saveObject = this.getSaveObject()
-
-    if (saveObject != null) {
-      // prüfen ob startDate vorhanden
-      if (saveObject.startDate) {
-        return saveObject.startDate
-      }
+    let saveObject = this.loadObject()
+    if (saveObject.days != null) {
+      return saveObject.days
+    } else {
+      return null
     }
-    return null
   }
 
-  getSaveObject() {
-    // laden des speicherobjekt
-    let saveObject = localStorage.getItem('app66')
-    return JSON.parse(saveObject) // localstorage item zu objekt umwandeln
+  getStartDate() {
+    // laden das speicherobjekt
+    let saveObject = this.loadObject()
+    if (saveObject.startDate != null) {
+      return saveObject.startDate
+    } else {
+      return null
+    }
+  }
+
+  getGoalName() {
+    let saveObject = this.loadObject()
+    if (saveObject.goalName != null) {
+      return saveObject.goalName
+    } else {
+      return null
+    }
+  }
+
+  getDailyTime() {
+    // laden das speicherobjekt
+    let saveObject = this.loadObject()
+    if (saveObject.dailyTime != null) {
+      return saveObject.dailyTime
+    } else {
+      return null
+    }
+  }
+
+  loadObject() {
+    try {
+      // laden des speicherobjekt
+      let object = JSON.parse(localStorage.getItem('app66'))
+
+      // prüfen ob speicherobjekt existiert
+      if (object != null) {
+        // rückgabe des speicherobjekts
+        return object
+      } else {
+        // sonst gebe leeres objekt zurück
+        return {}
+      }
+    } catch (e) {
+      return {}
+    }
   }
 
   saveObject(object) {
@@ -75,6 +113,10 @@ export default class App extends Component {
                 onInput={this.setGoalName}
                 setSlider={this.setSlider}
                 dailyTime={this.state.dailyTime}
+                goalName={this.state.goalName}
+                saveObject={this.saveObject}
+                loadObject={this.loadObject}
+                totalDays={this.state.totalDays}
               />
             )}
           />
@@ -89,9 +131,11 @@ export default class App extends Component {
                 today={this.state.today}
                 selectedDate={this.state.selectedDate}
                 onSelect={this.setDate}
+                days={this.state.days}
               />
             )}
           />
+          <Route path="/Abfrage" render={() => <Abfrage />} />
         </Wrapper>
       </Router>
     )

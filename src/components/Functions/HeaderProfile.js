@@ -22,12 +22,22 @@ const Background = styled.div`
 
 const HabitTarget = styled.div`
   position: absolute;
+  margin-top: -190px;
+  margin-left: 140px;
   z-index: 2;
 `
 
-const H2 = styled.h2`
+const GoalNameText = styled.h4`
   text-align: center;
   color: black;
+  margin: 0;
+  margin-bottom: 5px;
+`
+
+const DailyTimeText = styled.h4`
+  text-align: center;
+  color: black;
+  margin: 0;
 `
 
 export default class HeaderSelection extends Component {
@@ -36,11 +46,11 @@ export default class HeaderSelection extends Component {
     return (
       <React.Fragment>
         <LivingRoom />
-        <Background />
         <HabitTarget>
-          <H2>{goalName}</H2>
-          <H2>{dailyTime} Minuten</H2>
+          <GoalNameText>{goalName}</GoalNameText>
+          <DailyTimeText>{dailyTime} Minuten</DailyTimeText>
         </HabitTarget>
+        <Background />
       </React.Fragment>
     )
   }

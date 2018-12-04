@@ -1,7 +1,7 @@
 [
   {
     "day": 1,
-    "success": true,
+    "success": false,
     "failure": false,
     "future": false
   },
