@@ -15,15 +15,15 @@ const Background = styled.div`
   position: absolute;
   width: 100vw;
   height: 150px;
-  background-color: #d8d8d8;
+  background-image: linear-gradient(#d8d8d8, white);
   z-index: 0;
   margin-top: -90px;
 `
 
 const HabitTarget = styled.div`
   position: absolute;
-  margin-top: -190px;
-  margin-left: 140px;
+  width: 100vw;
+  margin-top: -188px;
   z-index: 2;
 `
 

@@ -50,21 +50,25 @@ const Btn = styled.section`
 
 export default class Selection extends Component {
   setHabitData = () => {
-    let sObject = this.props.loadObject() // laden des speicherobjekts
-    sObject.startDate = new Date()
-    sObject.dailyTime = this.props.dailyTime
-    sObject.goalName = this.props.goalName // setzen des aktuellen Datums
+    const { goalName, dailyTime, totalDays, days } = this.props
+    let sObject = {
+      startDate: new Date(),
+      goalName,
+      dailyTime,
+      totalDays,
+      days
+    } // laden des speicherobjekts
 
     // speichern der tage
-    let days = []
-    for (let i = 1; i <= this.props.totalDays; i++) {
-      days.push({
-        day: i,
-        success: false
-      })
-    }
+    // let days = []
+    // for (let i = 1; i <= this.props.totalDays; i++) {
+    //   days.push({
+    //     day: i,
+    //     success: false
+    //   })
+    // }
 
-    sObject.days = days
+    // sObject.days = days
 
     this.props.saveObject(sObject) // speichern des speicherobjekts
   }
@@ -76,14 +80,7 @@ export default class Selection extends Component {
   }
 
   render() {
-    const {
-      onInput,
-      setSlider,
-      dailyTime,
-      goalName,
-      loadObject,
-      saveObject
-    } = this.props
+    const { onInput, setSlider, dailyTime } = this.props
 
     return (
       <Wrapper>

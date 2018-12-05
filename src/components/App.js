@@ -5,12 +5,15 @@ import styled from 'styled-components'
 import Selection from './Pages/Selection'
 import Profile from './Pages/Profile'
 import Home from './Pages/Home'
-import Abfrage from './Pages/Query'
+import Query from './Pages/Query'
+import moment from 'moment'
 
 const Wrapper = styled.section`
   height: 100vh;
   width: 100vw;
 `
+
+const TOTAL_DAYS = 66
 
 export default class App extends Component {
   state = {
@@ -18,8 +21,10 @@ export default class App extends Component {
     dailyTime: this.getDailyTime(),
     today: new Date(),
     startDate: this.getStartDate(),
-    totalDays: 66,
-    days: this.getDays()
+    totalDays: TOTAL_DAYS,
+    days: this.getDays(),
+    dateDifference: this.getDateDifference() || 0,
+    response: null
   }
 
   getEndDate() {
@@ -39,59 +44,68 @@ export default class App extends Component {
     })
   }
 
+  setResponse = response => {
+    console.log(response)
+
+    this.setState({
+      days: {
+        ...this.state.days,
+        [this.state.dateDifference]: {
+          ...this.state.days[this.state.dateDifference],
+          success: response
+        }
+      }
+    })
+  }
+
   getDays() {
-    // laden das speicherobjekt
     let saveObject = this.loadObject()
-    if (saveObject.days != null) {
-      return saveObject.days
-    } else {
-      return null
-    }
+    return (
+      saveObject.days ||
+      new Array(TOTAL_DAYS).fill().map((_, index) => {
+        return {
+          day: index + 1,
+          success: false,
+          isInFuture: true
+        }
+      })
+    )
+  }
+
+  getResponse() {
+    const saveObject = this.loadObject()
+    return saveObject.response
+  }
+
+  getDateDifference() {
+    const now = moment(new Date())
+    console.log(now)
+    const start = moment(this.getStartDate())
+    const diff = Math.floor(moment.duration(now.diff(start)).asDays())
+    console.log(now)
+    return diff === -1 ? 0 : diff
   }
 
   getStartDate() {
-    // laden das speicherobjekt
-    let saveObject = this.loadObject()
-    if (saveObject.startDate != null) {
-      return saveObject.startDate
-    } else {
-      return null
-    }
+    const saveObject = this.loadObject()
+    return new Date(saveObject.startDate)
   }
 
   getGoalName() {
-    let saveObject = this.loadObject()
-    if (saveObject.goalName != null) {
-      return saveObject.goalName
-    } else {
-      return null
-    }
+    const saveObject = this.loadObject()
+    return saveObject.goalName
   }
 
   getDailyTime() {
     // laden das speicherobjekt
-    let saveObject = this.loadObject()
-    if (saveObject.dailyTime != null) {
-      return saveObject.dailyTime
-    } else {
-      return null
-    }
+    const saveObject = this.loadObject()
+    return saveObject.dailyTime
   }
 
   loadObject() {
     try {
-      // laden des speicherobjekt
-      let object = JSON.parse(localStorage.getItem('app66'))
-
-      // prüfen ob speicherobjekt existiert
-      if (object != null) {
-        // rückgabe des speicherobjekts
-        return object
-      } else {
-        // sonst gebe leeres objekt zurück
-        return {}
-      }
-    } catch (e) {
+      return JSON.parse(localStorage.getItem('app66')) || {}
+    } catch (error) {
       return {}
     }
   }
@@ -99,6 +113,10 @@ export default class App extends Component {
   saveObject(object) {
     // 2. benutzen das "object", wandeln es in ein String um und speichern es in localStorage
     localStorage.setItem('app66', JSON.stringify(object))
+  }
+
+  componentDidUpdate() {
+    this.saveObject(this.state)
   }
 
   render() {
@@ -115,8 +133,8 @@ export default class App extends Component {
                 dailyTime={this.state.dailyTime}
                 goalName={this.state.goalName}
                 saveObject={this.saveObject}
-                loadObject={this.loadObject}
                 totalDays={this.state.totalDays}
+                days={this.state.days}
               />
             )}
           />
@@ -132,10 +150,19 @@ export default class App extends Component {
                 selectedDate={this.state.selectedDate}
                 onSelect={this.setDate}
                 days={this.state.days}
+                dateDifference={this.state.dateDifference}
               />
             )}
           />
-          <Route path="/Abfrage" render={() => <Abfrage />} />
+          <Route
+            path="/Query"
+            render={() => (
+              <Query
+                dateDifference={this.state.dateDifference}
+                setResponse={this.setResponse}
+              />
+            )}
+          />
         </Wrapper>
       </Router>
     )
