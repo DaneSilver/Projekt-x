@@ -56,10 +56,10 @@ const Circle = styled.div`
 `
 
 export default class Profile extends Component {
-  static propTypes = {
-    goalName: PropTypes.string,
-    dailyTime: PropTypes.number
-  }
+  // static propTypes = {
+  //   goalName: PropTypes.string,
+  //   dailyTime: PropTypes.number
+  // }
 
   checkFuture = day => {
     // berechnung von heute bis startDatum, ob tag in der zukunft liegt
@@ -80,7 +80,8 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { days, dateDifference, checkFuture } = this.props
+    const { days, dateDifference } = this.props
+    console.log(days)
 
     return (
       <React.Fragment>

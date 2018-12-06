@@ -14,11 +14,10 @@ const Wrapper = styled.section`
 `
 
 const TOTAL_DAYS = 66
-
 export default class App extends Component {
   state = {
     goalName: this.getGoalName(),
-    dailyTime: this.getDailyTime(),
+    dailyTime: this.getDailyTime() || 0,
     today: new Date(),
     startDate: this.getStartDate(),
     totalDays: TOTAL_DAYS,
@@ -45,23 +44,24 @@ export default class App extends Component {
   }
 
   setResponse = response => {
-    console.log(response)
-
+    const index = this.state.dateDifference
+    const day = this.state.days[index]
     this.setState({
-      days: {
-        ...this.state.days,
-        [this.state.dateDifference]: {
-          ...this.state.days[this.state.dateDifference],
-          success: response
-        }
-      }
+      days: [
+        ...this.state.days.slice(0, index),
+        { ...day, success: response },
+        ...this.state.days.slice(index + 1)
+      ]
     })
   }
 
   getDays() {
     let saveObject = this.loadObject()
     return (
-      saveObject.days ||
+      saveObject.days.map((day, index) => {
+        day.isInFuture = this.getDateDifference() < index
+        return day
+      }) ||
       new Array(TOTAL_DAYS).fill().map((_, index) => {
         return {
           day: index + 1,
@@ -72,17 +72,15 @@ export default class App extends Component {
     )
   }
 
-  getResponse() {
-    const saveObject = this.loadObject()
-    return saveObject.response
-  }
+  // getResponse() {
+  //   const saveObject = this.loadObject()
+  //   return saveObject.response
+  // }
 
   getDateDifference() {
     const now = moment(new Date())
-    console.log(now)
     const start = moment(this.getStartDate())
     const diff = Math.floor(moment.duration(now.diff(start)).asDays())
-    console.log(now)
     return diff === -1 ? 0 : diff
   }
 
