@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import ButtonLinkQuery from '../Functions/ButtonChecklist'
-//import ButtonYes from '../Functions/ButtonYes'
-import ButtonNo from '../Functions/ButtonNo'
-import HeaderQuery from '../Functions/HeaderQuery'
+import HeaderQuery from '../ui/HeaderQuery'
 import styled from 'styled-components'
-import Footer from '../Functions/Footer'
+import Footer from '../ui/Footer'
 
 const BtnStyle = styled.section`
   margin-top: 100px;
@@ -24,7 +21,6 @@ export default class Query extends Component {
       <div>
         <HeaderQuery />
         <BtnStyle>
-          <ButtonLinkQuery />
           <Button onClick={() => this.props.setResponse(true)}>Ja</Button>
           <Button onClick={() => this.props.setResponse(false)}>Nein</Button>
         </BtnStyle>

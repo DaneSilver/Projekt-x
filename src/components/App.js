@@ -16,10 +16,10 @@ const Wrapper = styled.section`
 const TOTAL_DAYS = 66
 export default class App extends Component {
   state = {
-    goalName: this.getGoalName(),
-    dailyTime: this.getDailyTime() || 0,
+    goalName: this.getData('goalName'),
+    dailyTime: this.getData('dailyTime') || 0,
     today: new Date(),
-    startDate: this.getStartDate(),
+    startDate: new Date(this.getData('startDate')),
     totalDays: TOTAL_DAYS,
     days: this.getDays(),
     dateDifference: this.getDateDifference() || 0,
@@ -82,6 +82,12 @@ export default class App extends Component {
     const start = moment(this.getStartDate())
     const diff = Math.floor(moment.duration(now.diff(start)).asDays())
     return diff === -1 ? 0 : diff
+  }
+
+  getData(objectKey) {
+    const saveObject = this.loadObject()
+    console.log(objectKey, saveObject[objectKey])
+    return saveObject[objectKey]
   }
 
   getStartDate() {

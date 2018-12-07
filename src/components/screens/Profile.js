@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import HeaderProfile from '../Functions/HeaderProfile'
+import HeaderProfile from '../ui/HeaderProfile'
 import { NavLink } from 'react-router-dom'
-import Footer from '../Functions/Footer'
+import Footer from '../ui/Footer'
 
 const GridCalendar = styled.div`
   display: grid;
@@ -56,39 +56,29 @@ const Circle = styled.div`
 `
 
 export default class Profile extends Component {
-  // static propTypes = {
-  //   goalName: PropTypes.string,
-  //   dailyTime: PropTypes.number
-  // }
+  static propTypes = {
+    goalName: PropTypes.string,
+    dailyTime: PropTypes.number
+  }
 
   checkFuture = day => {
-    // berechnung von heute bis startDatum, ob tag in der zukunft liegt
-    // if:
-
     if (day.isInFuture) {
       return 'futureClass'
     }
 
-    // wenn tag heute ist oder in der vergangenheit liegt, prüfe auf success
     if (day.success) {
       return 'successClass'
     } else {
       return 'failureClass'
     }
-
-    // else: wenn datum in der Zukunft liegt, dann return futureClass
   }
 
   render() {
-    const { days, dateDifference } = this.props
-    console.log(days)
+    const { days, dateDifference, goalName, dailyTime } = this.props
 
     return (
       <React.Fragment>
-        <HeaderProfile
-          goalName={this.props.goalName}
-          dailyTime={this.props.dailyTime}
-        />
+        <HeaderProfile goalName={goalName} dailyTime={dailyTime} />
         <RestDaysFlex>
           <RestDaysText>
             Super! <br />
@@ -103,9 +93,6 @@ export default class Profile extends Component {
             </FlexBox>
           ))}
         </GridCalendar>
-        <NavLink to="/Profile">
-          <Footer />
-        </NavLink>
       </React.Fragment>
     )
   }

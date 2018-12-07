@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import ButtonPlus from '../Functions/ButtonPlus'
+import Button from '../ui/ButtonUi'
 
 export default class Home extends Component {
   render() {
@@ -9,7 +9,7 @@ export default class Home extends Component {
       <div>
         Home
         <NavLink to="/Selection">
-          <ButtonPlus />
+          <Button />
         </NavLink>
       </div>
     )

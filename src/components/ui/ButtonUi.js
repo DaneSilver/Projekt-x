@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-export const Btn = styled.button`
+export const Button = styled.button`
   padding: 15px;
   border-radius: 50px;
   border: 0.5px solid #00978e;
@@ -15,11 +15,11 @@ export const Font = styled.p`
   font-size: 16px;
 `
 
-export default class Button extends Component {
+export default class ButtonUi extends Component {
   render() {
     return (
       <React.Fragment>
-        <Btn>Los geht's!</Btn>
+        <Button />
       </React.Fragment>
     )
   }

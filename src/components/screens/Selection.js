@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-//import uid from 'uid'
 import styled from 'styled-components'
-import Input from '../Functions/Input'
-import Button from '../Functions/Button'
-import Slider from '../Functions/Slider'
-import HeaderSelection from '../Functions/HeaderSelection'
+import Input from '../ui/Input'
+import Slider from '../ui/Slider'
+import HeaderSelection from '../ui/HeaderSelection'
 
 const Wrapper = styled.section`
   display: grid;
@@ -43,7 +41,17 @@ const TimeDisplay = styled.h4`
   color: #008981;
 `
 
-const Btn = styled.section`
+const Button = styled.button`
+  padding: 15px;
+  border-radius: 50px;
+  border: 0.5px solid #00978e;
+  background-color: #cfebe9;
+  width: 250px;
+  font-size: 15px;
+  margin-bottom: 20px;
+`
+
+const BtnFlex = styled.section`
   display: flex;
   justify-content: center;
 `
@@ -57,20 +65,9 @@ export default class Selection extends Component {
       dailyTime,
       totalDays,
       days
-    } // laden des speicherobjekts
+    }
 
-    // speichern der tage
-    // let days = []
-    // for (let i = 1; i <= this.props.totalDays; i++) {
-    //   days.push({
-    //     day: i,
-    //     success: false
-    //   })
-    // }
-
-    // sObject.days = days
-
-    this.props.saveObject(sObject) // speichern des speicherobjekts
+    this.props.saveObject(sObject)
   }
 
   static propTypes = {
@@ -93,9 +90,9 @@ export default class Selection extends Component {
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
         <TimeDisplay>Mindestens {dailyTime} Minuten!</TimeDisplay>
         <NavLink to="/Profile">
-          <Btn onClick={this.setHabitData}>
+          <BtnFlex onClick={this.setHabitData}>
             <Button />
-          </Btn>
+          </BtnFlex>
         </NavLink>
       </Wrapper>
     )
