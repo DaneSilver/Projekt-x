@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import image from '../../images/wohnzimmerwand.svg'
 
 const LivingRoom = styled.div`
   height: 270px;
   width: 100vw;
-  margin-top: -30px;
-  background-image: url(../../images/wohnzimmerwand.svg);
+  margin-top: -38px;
+  background-image: url(${image});
   background-size: cover;
   z-index: 1;
   position: relative;
@@ -17,7 +18,7 @@ const Background = styled.div`
   height: 150px;
   background-image: linear-gradient(#d8d8d8, white);
   z-index: 0;
-  margin-top: -90px;
+  margin-top: 215px;
 `
 
 const HabitTarget = styled.div`
@@ -32,12 +33,17 @@ const GoalNameText = styled.h4`
   color: black;
   margin: 0;
   margin-bottom: 5px;
+  z-index: 3;
+  position: absolute;
 `
 
 const DailyTimeText = styled.h4`
   text-align: center;
   color: black;
   margin: 0;
+  z-index: 4;
+
+  position: absolute;
 `
 
 export default class HeaderSelection extends Component {

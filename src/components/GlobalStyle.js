@@ -3,11 +3,11 @@ import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
 
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
+  /* box-sizing: content-box; */
 }
 
 body {
-  
   margin: 0;
   padding: 0;
   background-color: #A9A9A9;

@@ -1,43 +1,65 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import ButtonUi from '../ui/ButtonUi'
 import { NavLink } from 'react-router-dom'
 
 const Wrapper = styled.section`
-  display: block;
+  display: flex;
+  margin-bottom: 0;
 `
 
-const NavBar = styled.div`
+const BtnProfile = styled.div`
+  width: 50vw;
+  height: 60px;
+  background-color: deeppink;
+  border-right: 5px solid white;
+  margin-bottom: 0;
+`
+
+const FlexCircle = styled.section`
   display: flex;
-  width: 100vw;
-  height: 100px;
+  justify-content: center;
+`
+
+const ButtonCircle = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
-  background-color: deepskyblue;
+  position: absolute;
+  margin-top: -31px;
+  margin-bottom: 100px;
+  height: 60px;
+  width: 60px;
+  background-color: blue;
+  border-radius: 50%;
+  border: 5px solid white;
+  margin-bottom: 0;
+`
+
+const BtnQuery = styled.div`
+  width: 50vw;
+  height: 60px;
+  background-color: gray;
+  margin-bottom: 0;
 `
 
 export default class Footer extends Component {
   render() {
     return (
       <Wrapper>
-        <NavBar>
-          <NavLink to="/Profile">
-            <ButtonUi>Profile</ButtonUi>
-          </NavLink>
+        <NavLink to="/Profile">
+          <BtnProfile>Profile</BtnProfile>
+        </NavLink>
 
-          <NavLink to="/Query">
-            <ButtonUi>Query</ButtonUi>
-          </NavLink>
+        <NavLink to="/Selection">
+          <FlexCircle>
+            <ButtonCircle>+</ButtonCircle>
+          </FlexCircle>
+        </NavLink>
 
-          <NavLink to="/Selection">
-            <ButtonUi>Selection</ButtonUi>
-          </NavLink>
-        </NavBar>
+        <NavLink to="/Query">
+          <BtnQuery>Query</BtnQuery>
+        </NavLink>
       </Wrapper>
     )
   }
-}
-{
-  /* <NavLink to="/Profile">
-<Footer />
-</NavLink> */
 }

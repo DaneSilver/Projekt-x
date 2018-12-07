@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
-import Selection from './Pages/Selection'
-import Profile from './Pages/Profile'
-import Home from './Pages/Home'
-import Query from './Pages/Query'
+import Selection from './screens/Selection'
+import Profile from './screens/Profile'
+import Home from './screens/Home'
+import Query from './screens/Query'
 import moment from 'moment'
 
 const Wrapper = styled.section`
