@@ -4,23 +4,21 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import Input from '../ui/Input'
 import Slider from '../ui/Slider'
-import HeaderSelection from '../ui/HeaderSelection'
+import Header from '../ui/Header'
+import image from '../../images/clock3.svg'
 
 const Wrapper = styled.section`
   display: grid;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  grid-template-rows: auto 60px;
 `
 
 const Clock = styled.object`
-  position: relative;
-  height: 80px;
-  width: 80px;
-  margin-left: 140px;
-  margin-right: 140px;
-  margin-top: 30px;
+  height: 70px;
+  width: 70px;
   background-size: cover;
-  background-image: url(../../images/clock3.svg);
+  background-image: url(${image});
+  margin: 13px;
 `
 
 const TextFlex = styled.section`
@@ -29,9 +27,19 @@ const TextFlex = styled.section`
   align-items: center;
 `
 
-const MinDisplay = styled.h4`
-  margin-top: 90px;
+const GoalText = styled.h4`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  z-index: 1;
+  margin-left: 136px;
+  margin-top: 53px;
   position: absolute;
+  text-align: center;
+`
+
+const MinDisplay = styled.h4`
   color: black;
 `
 
@@ -48,12 +56,22 @@ const Button = styled.button`
   background-color: #cfebe9;
   width: 250px;
   font-size: 15px;
-  margin-bottom: 20px;
+  margin-bottom: -10px;
+  margin-top: 10px;
 `
 
 const BtnFlex = styled.section`
   display: flex;
   justify-content: center;
+`
+
+const Background = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 150px;
+  margin-top: 225px;
+  background-image: linear-gradient(#bdd9dc, #fff);
+  z-index: -2;
 `
 
 export default class Selection extends Component {
@@ -81,17 +99,28 @@ export default class Selection extends Component {
 
     return (
       <Wrapper>
-        <HeaderSelection />
+        <Header />
+        <Background />
+        <GoalText>
+          Welches Ziel <br /> verfolgst Du?
+        </GoalText>
         <Input onChange={onInput} />
+
         <TextFlex>
           <Clock />
+        </TextFlex>
+
+        <TextFlex>
           <MinDisplay>Wie viele Minuten pro Tag?</MinDisplay>
         </TextFlex>
+        <TextFlex>
+          <TimeDisplay>Mindestens {dailyTime} Minuten!</TimeDisplay>
+        </TextFlex>
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
-        <TimeDisplay>Mindestens {dailyTime} Minuten!</TimeDisplay>
+
         <NavLink to="/Profile">
           <BtnFlex onClick={this.setHabitData}>
-            <Button />
+            <Button>Los gehts!</Button>
           </BtnFlex>
         </NavLink>
       </Wrapper>

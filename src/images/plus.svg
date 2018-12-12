@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="90px" height="90px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 3 Copy 2</title>
+    <title>Group</title>
     <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="1" transform="translate(-142.000000, -950.000000)">
-            <g id="Group-3" transform="translate(-1.000000, 952.000000)">
-                <g id="Group-3-Copy-2" transform="translate(145.000000, 0.000000)">
-                    <circle id="Oval" stroke="#91D1CC" stroke-width="2.16" fill="#D0EBE9" cx="43" cy="43" r="43"></circle>
-                    <g id="Group-2" transform="translate(25.800000, 25.800000)" fill="#D8D8D8" stroke="#979797" stroke-width="2.88">
-                        <rect id="Rectangle" x="15.7733333" y="1.44" width="2.85333333" height="31.52"></rect>
-                        <path d="M15.7733333,1.44 L15.7733333,32.96 L18.6266667,32.96 L18.6266667,1.44 L15.7733333,1.44 Z" id="Rectangle-Copy" transform="translate(17.200000, 17.200000) rotate(-270.000000) translate(-17.200000, -17.200000) "></path>
-                    </g>
-                </g>
+    <g id="Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="newsletter-ny-copy" transform="translate(-68.000000, -1984.000000)" fill="#FFFFFF">
+            <g id="Group" transform="translate(68.000000, 1984.000000)">
+                <rect id="Rectangle" x="10" y="0" width="3" height="22" rx="1.5"></rect>
+                <rect id="Rectangle-Copy" transform="translate(11.500000, 11.000000) rotate(-270.000000) translate(-11.500000, -11.000000) " x="10" y="0" width="3" height="22" rx="1.5"></rect>
             </g>
         </g>
     </g>

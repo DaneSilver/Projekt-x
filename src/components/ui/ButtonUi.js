@@ -9,6 +9,10 @@ export const Button = styled.button`
   width: 250px;
   font-size: 15px;
   margin-bottom: 20px;
+
+  &:any-link {
+    text-decoration: none;
+  }
 `
 
 export const Font = styled.p`

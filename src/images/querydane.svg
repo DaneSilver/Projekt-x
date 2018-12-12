@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="93px" height="88px" viewBox="0 0 93 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 12</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-12">
+            <path d="M31.3915337,85.661043 L2,87.9045739 C6.34763134,82.888978 9.26715932,76.8027185 10.4608213,70.2828358 C5.14281752,63.0676891 2,54.1508667 2,44.5 C2,20.4756134 21.4756134,1 45.5,1 L49.5,1 C73.5243866,1 93,20.4756134 93,44.5 C93,68.5243866 73.5243866,88 49.5,88 L45.5,88 C40.5617759,88 35.815742,87.1771359 31.3915337,85.661043 Z" id="Combined-Shape-Copy" fill="#7F7F7F"></path>
+            <path d="M29.3915337,84.661043 L-1.77635684e-14,86.9045739 C4.34763134,81.888978 7.26715932,75.8027185 8.46082126,69.2828358 C3.14281752,62.0676891 1.18189031e-15,53.1508667 0,43.5 C-2.94213882e-15,19.4756134 19.4756134,4.41320823e-15 43.5,0 L47.5,0 C71.5243866,-4.41320823e-15 91,19.4756134 91,43.5 C91,67.5243866 71.5243866,87 47.5,87 L43.5,87 C38.5617759,87 33.815742,86.1771359 29.3915337,84.661043 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            <text id="?" font-family="ArialMT, Arial" font-size="40" font-weight="normal" fill="#009D94">
+                <tspan x="34.8769531" y="58">?</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

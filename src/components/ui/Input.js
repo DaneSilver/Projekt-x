@@ -3,15 +3,21 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 export const InputStyle = styled.input`
-  position: absolute;
   border-color: #d0ebe9;
   border-radius: 30px;
-  padding: 10px;
+  padding: 15px;
   height: 10px;
   width: 240px;
   font-size: 15px;
   text-align: center;
-  margin-top: -1px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:any-link {
+    text-decoration: none;
+  }
 `
 
 const Flex = styled.div`

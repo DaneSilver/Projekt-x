@@ -9,12 +9,11 @@ const FlexStyle = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: 30px;
 `
 
 const SliderFlex = styled.section`
   width: 250px;
-  margin-top: 50px;
-  z-index: 1;
 `
 
 export default class Slider extends Component {

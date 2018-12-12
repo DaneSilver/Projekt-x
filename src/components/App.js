@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import styled from 'styled-components'
 import Selection from './screens/Selection'
@@ -19,7 +19,7 @@ export default class App extends Component {
     goalName: this.getData('goalName'),
     dailyTime: this.getData('dailyTime') || 0,
     today: new Date(),
-    startDate: new Date(this.getData('startDate')),
+    startDate: this.getStartDate() || new Date(),
     totalDays: TOTAL_DAYS,
     days: this.getDays(),
     dateDifference: this.getDateDifference() || 0,
@@ -56,26 +56,26 @@ export default class App extends Component {
   }
 
   getDays() {
-    let saveObject = this.loadObject()
-    return (
-      saveObject.days.map((day, index) => {
+    const savedData = this.loadObject()
+    const hasSavedDays = savedData.days
+
+    if (hasSavedDays) {
+      return savedData.days.map((day, index) => {
         day.isInFuture = this.getDateDifference() < index
+        day.isToday = this.getDateDifference() === index
         return day
-      }) ||
-      new Array(TOTAL_DAYS).fill().map((_, index) => {
+      })
+    } else {
+      return new Array(TOTAL_DAYS).fill().map((_, index) => {
         return {
           day: index + 1,
-          success: false,
-          isInFuture: true
+          success: null,
+          isInFuture: index > 0,
+          isToday: index === 0
         }
       })
-    )
+    }
   }
-
-  // getResponse() {
-  //   const saveObject = this.loadObject()
-  //   return saveObject.response
-  // }
 
   getDateDifference() {
     const now = moment(new Date())
@@ -85,25 +85,24 @@ export default class App extends Component {
   }
 
   getData(objectKey) {
-    const saveObject = this.loadObject()
-    console.log(objectKey, saveObject[objectKey])
-    return saveObject[objectKey]
+    const savedData = this.loadObject()
+    return savedData[objectKey]
   }
 
   getStartDate() {
-    const saveObject = this.loadObject()
-    return new Date(saveObject.startDate)
+    const savedData = this.loadObject()
+    return savedData.startDate && new Date(savedData.startDate)
   }
 
   getGoalName() {
-    const saveObject = this.loadObject()
-    return saveObject.goalName
+    const savedData = this.loadObject()
+    return savedData.goalName
   }
 
   getDailyTime() {
     // laden das speicherobjekt
-    const saveObject = this.loadObject()
-    return saveObject.dailyTime
+    const savedData = this.loadObject()
+    return savedData.dailyTime
   }
 
   loadObject() {
@@ -142,6 +141,7 @@ export default class App extends Component {
               />
             )}
           />
+
           <Route
             path="/Profile"
             render={() => (
@@ -160,12 +160,7 @@ export default class App extends Component {
           />
           <Route
             path="/Query"
-            render={() => (
-              <Query
-                dateDifference={this.state.dateDifference}
-                setResponse={this.setResponse}
-              />
-            )}
+            render={() => <Query setResponse={this.setResponse} />}
           />
         </Wrapper>
       </Router>
