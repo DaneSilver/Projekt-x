@@ -100,10 +100,13 @@ export default class Selection extends Component {
     return (
       <Wrapper>
         <Header />
+
         <Background />
+
         <GoalText>
           Welches Ziel <br /> verfolgst Du?
         </GoalText>
+
         <Input onChange={onInput} />
 
         <TextFlex>
@@ -113,13 +116,15 @@ export default class Selection extends Component {
         <TextFlex>
           <MinDisplay>Wie viele Minuten pro Tag?</MinDisplay>
         </TextFlex>
+
         <TextFlex>
           <TimeDisplay>Mindestens {dailyTime} Minuten!</TimeDisplay>
         </TextFlex>
+
         <Slider onChange={setSlider} value={dailyTime} startTime={dailyTime} />
 
         <NavLink to="/Profile">
-          <BtnFlex onClick={this.setHabitData}>
+          <BtnFlex onClick={this.setHabitData} data-cy="Button">
             <Button>Los gehts!</Button>
           </BtnFlex>
         </NavLink>

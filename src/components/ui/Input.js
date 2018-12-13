@@ -14,10 +14,6 @@ export const InputStyle = styled.input`
   &:focus {
     outline: none;
   }
-
-  &:any-link {
-    text-decoration: none;
-  }
 `
 
 const Flex = styled.div`
@@ -37,6 +33,7 @@ export default class Input extends Component {
     return (
       <Flex>
         <InputStyle
+          data-cy="Input"
           onChange={event => onChange(event.target.value)}
           placeholder="Gib Dein Ziel ein"
         />

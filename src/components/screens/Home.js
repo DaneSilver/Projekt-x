@@ -117,7 +117,7 @@ export default class Home extends Component {
         <NavLink to="/Selection">
           <Section>
             <ButtonCircle>
-              <IconPlus />
+              <IconPlus data-cy="Button" />
             </ButtonCircle>
           </Section>
         </NavLink>

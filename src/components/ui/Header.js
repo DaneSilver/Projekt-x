@@ -4,12 +4,17 @@ import image from '../../images/wohnzimmerwand.svg'
 
 const LivingRoom = styled.div`
   height: 270px;
-  width: 100vw;
+  width: 100%;
   margin-top: -30px;
   background-image: url(${image});
   background-size: cover;
   z-index: -1;
   position: relative;
+  @media only screen and (min-width: 376px) {
+    background-position-y: bottom;
+    height: 400px;
+    position: absolute;
+  }
 `
 
 export default class HeaderSelection extends Component {

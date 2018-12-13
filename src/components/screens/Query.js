@@ -65,7 +65,7 @@ const GoalNameText = styled.h4`
   color: #f7412d;
   margin-bottom: 0;
   margin-top: 51px;
-  text-shadow: 2px 1px #e3e3e3;
+  text-shadow: 1px 1px #e3e3e3;
   font-size: 15px;
 `
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Header from '../ui/Header'
-// import { NavLink } from 'react-router-dom'
 import Footer from '../ui/Footer'
 
 const Wrapper = styled.section`
